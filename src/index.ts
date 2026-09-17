@@ -357,7 +357,7 @@ app.post(
     // Preserve the original extension so Whisper knows the format.
     // Mobile (expo-av) sends audio/mp4; web browser sends audio/webm.
     const mime = req.file.mimetype || 'audio/mp4';
-    const ext = mime.includes('webm') ? '.webm' : '.mp4';
+    const ext = mime.includes('webm') ? '.webm' : mime.includes('mp4') ? '.mp4' : '.wav';
     const audioPath = tmpPath + ext;
 
     try {
